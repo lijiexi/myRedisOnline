@@ -12,9 +12,17 @@ public class ResponseResult {
         this.response = "OK";
         this.session_id = "fuck";
     }
+    public ResponseResult(String response,String session_id) {
+        this.response = response;
+        this.session_id = session_id;
+    }
     public static ResponseResult ok () {
         return new ResponseResult();
     }
+    public static ResponseResult ok (String response,String session_id) {
+        return new ResponseResult(response,session_id);
+    }
+
 
     public String getResponse() {
         return response;

@@ -16,9 +16,16 @@ public class ErrorResult {
         this.session_id = "";
         load();
     }
+    public ErrorResult (String error, String session_id) {
+        this.error = error;
+        this.session_id = session_id;
+    }
     public static ErrorResult ok () {
 
         return new ErrorResult();
+    }
+    public static ErrorResult syntaxError () {
+        return new ErrorResult("语法错误，请检查参数","");
     }
 
     private void load () {
