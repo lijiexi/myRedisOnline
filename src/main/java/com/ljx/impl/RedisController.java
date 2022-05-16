@@ -72,6 +72,23 @@ public class RedisController implements IRedisController {
             cache.put(record[1],Integer.valueOf(cache.getOrDefault(record[1],"0"))+1+"");
             String res = cache.get(record[1]);
             return ResponseResult.ok(res,"");
+        } else if ("decr".equalsIgnoreCase(command)) {
+            if (n != 2 || !isNumber(record[1])) {
+                return ErrorResult.syntaxError();
+            }
+            cache.put(record[1],Integer.valueOf(cache.getOrDefault(record[1],"0"))-1+"");
+            String res = cache.get(record[1]);
+            return ResponseResult.ok(res,"");
+        } else if ("del".equalsIgnoreCase(command)) {
+            if (n != 2 || !isNumber(record[1])) {
+                return ErrorResult.syntaxError();
+            }
+            String res = cache.remove(record[1]);
+            if (res == null) {
+                return ResponseResult.ok("integer 0","");
+            } else {
+                return ResponseResult.ok("integer 1","");
+            }
         }
         return null;
     }
