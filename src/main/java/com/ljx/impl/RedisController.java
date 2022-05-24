@@ -1,16 +1,8 @@
 package com.ljx.impl;
 
-
 import com.ljx.api.controller.IRedisController;
-
-
-import com.ljx.myRedis.api.ICache;
-import com.ljx.myRedis.core.bs.CacheBs;
-import com.ljx.myRedis.core.support.load.CacheLoads;
-import com.ljx.myRedis.core.support.persist.CachePersists;
 import com.ljx.result.ErrorResult;
 import com.ljx.result.HelpResult;
-import com.ljx.result.ResponseResult;
 import com.ljx.strategy.*;
 import com.ljx.utils.IPUtil;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,6 +22,7 @@ public class RedisController implements IRedisController {
         map.put("decr",new decrStrategy());
         map.put("incr",new incrStrategy());
         map.put("del",new delStrategy());
+        map.put("expire",new expireStrategy());
 
         String ip = IPUtil.getRequestIp(request);
         System.out.println("command is: "+command);
@@ -48,18 +41,15 @@ public class RedisController implements IRedisController {
         //执行操作
         return this.execute(record,ip,map);
 
-      //  return ErrorResult.ok();
     }
-    private Object execute (String[] record, String ip, Map<String, Strategy> map) throws Exception {
+    private Object execute (String[] record,
+                            String ip, Map<String, Strategy> map) throws Exception {
 
-
-
-        Strategy strategy = map.get(record[0]);
+        Strategy strategy = map.get(record[0].toLowerCase());
         if (strategy == null) {
             return ErrorResult.ok();
         }
         return strategy.run(record,ip);
-
     }
 
 
