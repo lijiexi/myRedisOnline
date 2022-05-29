@@ -12,7 +12,17 @@
 
 ### 常用命令及介绍
 
-用户可以通过点击或输入help command格式来获取网站支持的Redis命令。
+用户可以通过点击或输入以下格式指令来获取网站支持的Redis命令。
+
+```
+> help + command
+```
+
+#### Set命令
+
+![](https://raw.githubusercontent.com/lijiexi/Picbed_PicGo/main/blogImg/%E6%88%AA%E5%B1%8F2022-05-29%2020.32.16.png)
+
+#### Expire命令
 
 ![](https://raw.githubusercontent.com/lijiexi/Picbed_PicGo/main/blogImg/%E6%88%AA%E5%B1%8F2022-05-29%2020.22.40.png)
 
