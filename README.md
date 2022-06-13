@@ -2,7 +2,7 @@
 
 实现一个可以输入Redis命令的[网站](http://redis.lijiexi.com/)，用户可以通过点击或者输入操作来使用常用的Redis命令，本网站会自动保存用户的缓存，同时根据用户的命令返回相应的结果。
 
-网站的缓存使用基于Java实现的本地Redis：[myRedis](https://github.com/lijiexi/myRedis)
+该网站用来测试基于Java实现的本地Redis缓存：[myRedis](https://github.com/lijiexi/myRedis)
 
 ## 项目演示
 
@@ -37,3 +37,4 @@
 当用户键入错误参数或者网站不支持的指令时，会自动报错。
 
 ![](https://raw.githubusercontent.com/lijiexi/Picbed_PicGo/main/blogImg/%E6%88%AA%E5%B1%8F2022-05-29%2020.26.46.png)
+
